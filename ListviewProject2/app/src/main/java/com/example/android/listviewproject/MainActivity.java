@@ -2,6 +2,7 @@ package com.example.android.listviewproject;
 
 import android.content.Intent;
 import android.graphics.drawable.shapes.Shape;
+import android.icu.text.Transliterator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,7 +47,17 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(itemAdapter);
 
 
+             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                 @Override
 
+                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                     Items  currentfood = shopItems.get(i);
+                      Intent detailsIntent = new Intent(MainActivity.this , DetailActivity.class);
+                      detailsIntent.putExtra("currentfood", currentfood);
+                      startActivity(detailsIntent);
+
+                 }
+             });
 
 
     }
